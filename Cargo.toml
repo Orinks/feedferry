@@ -1,0 +1,35 @@
+[package]
+name = "feedferry"
+version = "0.2.0"
+edition = "2021"
+default-run = "feedferry"
+license = "MIT OR Apache-2.0"
+description = "Accessible graphical podcatcher and RSS/Atom/JSON Feed reader"
+readme = "README.md"
+keywords = ["rss", "podcast", "accessibility", "screen-reader", "gui"]
+categories = ["gui", "multimedia", "database"]
+rust-version = "1.92"
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+clap = { version = "4", features = ["derive", "env"] }
+directories = "5"
+feed-rs = "2"
+html-escape = "0.2"
+regex = "1"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "gzip", "brotli", "deflate"] }
+roxmltree = "0.20"
+rusqlite = { version = "0.32", features = ["bundled", "chrono"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+url = "2"
+wxdragon = "0.9.15"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
